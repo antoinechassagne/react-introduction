@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Title from "./components/Title";
 import PersonsList from "./components/PersonsList";
+import PersonNameInput from "./components/PersonNameInput";
 import Button from "./components/Button";
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
     <div>
       <Title>Persons list</Title>
       <PersonsList persons={persons} />
-      <input type="text" onChange={(e) => setNewName(e.target.value)}/>
+      <PersonNameInput onChange={(e) => setNewName(e.target.value)} />
       <Button onClick={() => setPersons([...persons, { name: newName }])}>
         Add person
       </Button>
