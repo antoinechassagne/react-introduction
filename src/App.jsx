@@ -15,7 +15,6 @@ const App = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   const searchUsers = async (q) => {
-    console.log(import.meta.env.VITE_GITHUB_TOKEN);
     setLoading({ ...loading, search: true });
     const data = await githubRequest(
       `https://api.github.com/search/users?q=${q}`
