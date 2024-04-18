@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { githubRequest } from "./services/github";
 import SearchUsers from "./components/SearchUsers";
 import UsersList from "./components/UsersList";
 import UserDetail from "./components/UserDetail";
@@ -14,9 +15,11 @@ const App = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   const searchUsers = async (q) => {
+    console.log(import.meta.env.VITE_GITHUB_TOKEN);
     setLoading({ ...loading, search: true });
-    const response = await fetch(`https://api.github.com/search/users?q=${q}`);
-    const data = await response.json();
+    const data = await githubRequest(
+      `https://api.github.com/search/users?q=${q}`
+    );
     setCount(data?.total_count || 0);
     setUsers(data?.items || []);
     setLoading({ ...loading, search: false });
@@ -29,13 +32,10 @@ const App = () => {
     }
     setLoading({ ...loading, user: true });
     const user = users.find((user) => user.id === id);
-    const responses = await Promise.all([
-      fetch(`https://api.github.com/users/${user.login}`),
-      fetch(`https://api.github.com/users/${user.login}/repos`),
+    const [userData, reposData] = await Promise.all([
+      githubRequest(`https://api.github.com/users/${user.login}`),
+      githubRequest(`https://api.github.com/users/${user.login}/repos`),
     ]);
-    const [userData, reposData] = await Promise.all(
-      responses.map((response) => response.json())
-    );
     setSelectedUser({ ...userData, repos: reposData });
     setLoading({ ...loading, user: false });
   };
