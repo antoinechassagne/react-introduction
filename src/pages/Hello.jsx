@@ -5,6 +5,7 @@ const Hello = () => {
     <>
       <h1>Hello world !</h1>
       <Link to="/goodbye">Goodbye</Link>
+      <Link to="/user/test">Test user</Link>
     </>
   );
 };
