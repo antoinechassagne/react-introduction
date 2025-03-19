@@ -10,11 +10,11 @@ const SearchUsers = ({ onSearch }) => {
         type="text"
         name="search"
         placeholder="Search username..."
-        className="border rounded px-2 py-1 w-96"
+        className="border rounded-sm px-2 py-1 w-96"
       />
       <button
         type="submit"
-        className="border rounded px-4 py-1 bg-indigo-500 text-white"
+        className="border rounded-sm px-4 py-1 bg-indigo-500 text-white"
       >
         Search
       </button>
