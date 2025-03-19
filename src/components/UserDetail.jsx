@@ -1,7 +1,7 @@
 import UserRepositoriesList from "./UserRepositoriesList";
 
 const UserDetail = ({ loading, user }) => {
-  if (!user) {
+  if (!user && !loading) {
     return null;
   }
 
