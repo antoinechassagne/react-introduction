@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { usePersons } from '../contexts/Persons';
 import Title from '../components/Title';
 
@@ -16,6 +16,7 @@ const Person = () => {
     <>
       <h2>{person.name}</h2>
       <p>ID: {person.id}</p>
+      <Link to="/">Back to home</Link>
     </>
   );
 }

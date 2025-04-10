@@ -5,7 +5,6 @@ import AddPersonForm from "../components/AddPersonForm";
 const Home = () => {
   const { persons, addPerson } = usePersons();
 
-  console.log(persons);
   return (
     <>
       <h2>Persons list</h2>
