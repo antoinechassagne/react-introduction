@@ -1,21 +1,21 @@
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router';
 
-import Hello from "./pages/Hello";
-import Goodbye from "./pages/Goodbye";
-import User from "./pages/User";
+import Home from './pages/Home';
+import About from './pages/About';
+import User from './pages/User';
 
 const App = () => {
   return (
     <>
-      <p>My app</p>
+      <header>Header</header>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hello />} />
-          <Route path="/goodbye" element={<Goodbye />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/users/:userId" element={<User />} />
         </Routes>
       </BrowserRouter>
-      <p>Footer</p>
+      <footer>Footer</footer>
     </>
   );
 };

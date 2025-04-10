@@ -1,12 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from 'react-router';
 
 const User = () => {
   const { userId } = useParams();
 
   return (
     <>
-      <h1>{userId}</h1>
-      <Link to="/">Back to home</Link>
+      <h1>Utilisateur {userId}</h1>
+      <Link to="/">Retourner sur l'accueil</Link>
     </>
   );
 };
