@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
+import Button from './Button';
 
-const PersonsList = ({ persons }) => {
+const PersonsList = ({ persons, onDelete }) => {
   if (!persons.length) {
     return <p>Aucune personne trouvée.</p>;
   }
@@ -8,9 +9,12 @@ const PersonsList = ({ persons }) => {
     <ul>
       {persons.map((person, index) => (
         <li key={index}>
-          <Link to={`/persons/${person.id}`}>
-            {person.name}
-          </Link>
+          <>
+            <Link to={`/persons/${person.id}`}>
+              {person.name}
+            </Link>
+            <Button onClick={() => onDelete(person.id)}>X</Button>
+          </>
         </li>
       ))}
     </ul>

@@ -13,12 +13,18 @@ export const PersonsProvider = ({ children }) => {
     writePersons([...persons, person]);
   }
 
+  const deletePerson = (id) => {
+    const filteredPersons = persons.filter((person) => person.id !== id);
+    setPersons(filteredPersons);
+    writePersons(filteredPersons);
+  }
+
   useEffect(() => {
     console.log('State persons: ', persons);
   }, [persons]);
 
   return (
-    <PersonsContext.Provider value={{ persons, addPerson }}>
+    <PersonsContext.Provider value={{ persons, addPerson, deletePerson }}>
       {children}
     </PersonsContext.Provider>
   );
