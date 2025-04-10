@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 const PersonsList = ({ persons }) => {
   if (!persons.length) {
     return <p>Aucune personne trouvée.</p>;
@@ -5,7 +7,11 @@ const PersonsList = ({ persons }) => {
   return (
     <ul>
       {persons.map((person, index) => (
-        <li key={index}>{person.name}</li>
+        <li key={index}>
+          <Link to={`/persons/${person.id}`}>
+            {person.name}
+          </Link>
+        </li>
       ))}
     </ul>
   );

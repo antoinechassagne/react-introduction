@@ -1,37 +1,31 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router';
 
 import { ThemeProvider } from './contexts/Theme';
+import { PersonsProvider } from './contexts/Persons';
 import Title from './components/Title';
-import PersonsList from './components/PersonsList';
-import AddPersonForm from './components/AddPersonForm';
 import ThemeToggler from './components/ThemeToggler';
 import Page from './components/Page';
+import Home from './pages/Home';
+import Person from './pages/Person';
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { id: crypto.randomUUID(), name: 'Alice' }
-  ]);
-
-  useEffect(() => {
-    console.log('State persons: ', persons);
-  }, [persons]);
-
-  const addPerson = (form) => {
-    const person = { id: crypto.randomUUID(), ...form };
-    setPersons([...persons, person]);
-  }
-
   return (
     <ThemeProvider>
-      <Page>
-        <header>
-          <Title>Persons list</Title>
-          <ThemeToggler />
-        </header>
-        <PersonsList persons={persons} />
-        <AddPersonForm onSubmit={addPerson} />
-      </Page>
-    </ThemeProvider>
+      <PersonsProvider>
+        <Page>
+          <header>
+            <Title>Persons manager</Title>
+            <ThemeToggler />
+          </header>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/persons/:personId" element={<Person />} />
+            </Routes>
+          </BrowserRouter>
+        </Page>
+      </PersonsProvider>
+    </ThemeProvider >
   )
 }
 
