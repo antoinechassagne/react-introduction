@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+import { ThemeProvider } from './contexts/Theme';
 import Title from './components/Title';
 import PersonsList from './components/PersonsList';
 import AddPersonForm from './components/AddPersonForm';
+import ThemeToggler from './components/ThemeToggler';
+import Page from './components/Page';
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -19,11 +22,16 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Title>Persons list</Title>
-      <PersonsList persons={persons} />
-      <AddPersonForm onSubmit={addPerson} />
-    </div>
+    <ThemeProvider>
+      <Page>
+        <header>
+          <Title>Persons list</Title>
+          <ThemeToggler />
+        </header>
+        <PersonsList persons={persons} />
+        <AddPersonForm onSubmit={addPerson} />
+      </Page>
+    </ThemeProvider>
   )
 }
 
