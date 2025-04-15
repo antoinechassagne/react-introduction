@@ -1,12 +1,20 @@
 import useSWR from 'swr';
 import { getPersons } from '../services/api';
+import { wait } from '../utils';
 
 const PersonsList = () => {
-  const { data, error, isLoading } = useSWR('/persons', getPersons);
+  console.log('Will start fetching data');
 
-  if (error) return <div>Failed to load</div>
-  if (isLoading) return <div>Loading...</div>
-  if (!data) return <div>No data</div>
+  const { data } = useSWR(
+    '/persons-but-suspensed',
+    async () => {
+      await wait();
+      return getPersons();
+    },
+    { suspense: true }
+  );
+
+  console.log('Data fetched !');
 
   return (
     <ul>

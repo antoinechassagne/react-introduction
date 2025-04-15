@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { Suspense } from 'react';
 import { getPersons } from './services/api';
 import PersonsList from './components/PersonsList';
 
@@ -20,7 +21,9 @@ const App = () => {
         ))}
       </ul>
       <h1>Data from PersonsList component</h1>
-      <PersonsList />
+      <Suspense fallback={<div>Loading data inside component...</div>}>
+        <PersonsList />
+      </Suspense>
     </div>
   )
 }
