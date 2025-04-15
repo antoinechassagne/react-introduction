@@ -1,9 +1,12 @@
-import useSWR from 'swr';
+import { useQuery } from '@tanstack/react-query';
 import { getPersons } from './services/api';
 import PersonsList from './components/PersonsList';
 
 const App = () => {
-  const { data, error, isLoading } = useSWR('persons', getPersons)
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['persons'],
+    queryFn: getPersons,
+  });
 
   if (error) return <div>Failed to load</div>
   if (isLoading) return <div>Loading...</div>
