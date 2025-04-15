@@ -13,7 +13,9 @@ const PersonsList = ({ persons, onDelete }) => {
             <Link to={`/persons/${person.id}`}>
               {person.name}
             </Link>
-            <Button onClick={() => onDelete(person.id)}>X</Button>
+            <Button onClick={() => onDelete(person.id)} className="trash">
+              🗑️
+            </Button>
           </>
         </li>
       ))}

@@ -45,3 +45,12 @@ form button {
   background-color: #fff;
   color: #000;
 }
+
+.trash {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  background: none;
+  cursor: pointer;
+}
