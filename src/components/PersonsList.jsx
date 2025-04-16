@@ -9,14 +9,12 @@ const PersonsList = ({ persons, onDelete }) => {
     <ul>
       {persons.map((person, index) => (
         <li key={index}>
-          <>
-            <Link to={`/persons/${person.id}`}>
-              {person.name}
-            </Link>
-            <Button onClick={() => onDelete(person.id)} className="trash">
-              🗑️
-            </Button>
-          </>
+          <Link to={`/persons/${person.id}`}>
+            {person.name}
+          </Link>
+          <Button onClick={() => onDelete(person.id)} className="trash">
+            🗑️
+          </Button>
         </li>
       ))}
     </ul>

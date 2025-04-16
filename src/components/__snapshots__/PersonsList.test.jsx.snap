@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<PersonsList /> > should display a message when persons list is empty > Empty persons list 1`] = `
+<div>
+  <p>
+    Aucune personne trouvée.
+  </p>
+</div>
+`;
+
+exports[`<PersonsList /> > should render the persons list > Persons list 1`] = `
+<div>
+  <ul>
+    <li>
+      <a
+        data-discover="true"
+        href="/persons/1"
+      >
+        John Doe
+      </a>
+      <button
+        class="trash"
+      >
+        🗑️
+      </button>
+    </li>
+    <li>
+      <a
+        data-discover="true"
+        href="/persons/2"
+      >
+        Jane Doe
+      </a>
+      <button
+        class="trash"
+      >
+        🗑️
+      </button>
+    </li>
+  </ul>
+</div>
+`;
